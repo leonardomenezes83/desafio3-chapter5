@@ -1,14 +1,14 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 1,
-    "passes": 1,
+    "tests": 3,
+    "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2021-11-05T17:54:02.176Z",
-    "end": "2021-11-05T17:54:02.675Z",
-    "duration": 499,
-    "testsRegistered": 1,
+    "start": "2021-11-05T17:54:31.625Z",
+    "end": "2021-11-05T17:54:32.592Z",
+    "duration": 967,
+    "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b4f8b4f8-e5bf-4c2a-82b4-be009af13076",
+      "uuid": "f7a7e667-4616-4865-8bf5-3f94e9dad847",
       "title": "",
       "fullFile": "cypress/tests/articles-login.spec.js",
       "file": "cypress/tests/articles-login.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "2b6ed7c5-dc9a-4efa-a34f-c23a0a88afdd",
+          "uuid": "62bce7dc-a547-4eb8-8cd1-cb8bf3393e5d",
           "title": "Verificações de Login",
           "fullFile": "",
           "file": "",
@@ -35,10 +35,28 @@
           "afterHooks": [],
           "tests": [
             {
+              "title": "Login com sucesso",
+              "fullTitle": "Verificações de Login Login com sucesso",
+              "timedOut": null,
+              "duration": 397,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://api.realworld.io/api/users/login',\n  body: {\n    user: {\n      \"email\": \"leonardormenezes83@gmail.com\",\n      \"password\": \"bootcamp@123\"\n    }\n  }\n}).then(response => {\n  //Wconsole.log(response)\n  expect(response.status).to.eq(200);\n  expect(response.body.user.token).not.null;\n});",
+              "err": {},
+              "uuid": "d96fb6d1-df6f-45db-b2f1-c6a7a7cd01b5",
+              "parentUUID": "62bce7dc-a547-4eb8-8cd1-cb8bf3393e5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
               "title": "Senha inválida",
               "fullTitle": "Verificações de Login Senha inválida",
               "timedOut": null,
-              "duration": 439,
+              "duration": 313,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +65,40 @@
               "context": null,
               "code": "cy.request({\n  method: 'POST',\n  url: 'https://api.realworld.io/api/users/login',\n  failOnStatusCode: false,\n  body: {\n    user: {\n      \"email\": \"leonardormenezes83@gmail.com\",\n      \"password\": \"123\"\n    }\n  }\n}).then(response => {\n  //console.log(response.body.errors.)\n  expect(response.status).to.eq(403);\n  expect(response.body.errors['email or password'][0]).to.eq('is invalid');\n  expect(response.body.user).to.undefined; //ou not.exist\n  //expect(response.body.user).not.exist\n});",
               "err": {},
-              "uuid": "d755fc3f-604b-43d3-a893-c4a1b022a485",
-              "parentUUID": "2b6ed7c5-dc9a-4efa-a34f-c23a0a88afdd",
+              "uuid": "fbe46ea8-c4bb-45db-bfc7-88513ef34cc7",
+              "parentUUID": "62bce7dc-a547-4eb8-8cd1-cb8bf3393e5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login ou senha em branco",
+              "fullTitle": "Verificações de Login Login ou senha em branco",
+              "timedOut": null,
+              "duration": 199,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://api.realworld.io/api/users/login',\n  failOnStatusCode: false,\n  body: {\n    user: {\n      \"email\": \"\",\n      \"password\": \"\"\n    }\n  }\n}).then(response => {\n  console.log(response);\n  expect(response.status).to.eq(422);\n  expect(response.body.errors.email[0]).eq(\"can't be blank\");\n  expect(response.body.user).to.undefined; //ou not.exist\n  //expect(response.body.user).not.exist\n});",
+              "err": {},
+              "uuid": "264866ec-8563-4c1c-87e8-f0ab3ec87518",
+              "parentUUID": "62bce7dc-a547-4eb8-8cd1-cb8bf3393e5d",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d755fc3f-604b-43d3-a893-c4a1b022a485"
+            "d96fb6d1-df6f-45db-b2f1-c6a7a7cd01b5",
+            "fbe46ea8-c4bb-45db-bfc7-88513ef34cc7",
+            "264866ec-8563-4c1c-87e8-f0ab3ec87518"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 439,
+          "duration": 909,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
 describe('Verificações de Login', () => {
-
+ 
     it('Login com sucesso', () => {
         cy.request({
             method: 'POST',

@@ -20,7 +20,7 @@ describe('Verificações de Login', () => {
         })
     })
 
-    it.only('Senha inválida', () => {
+    it('Senha inválida', () => {
         cy.request({
             method: 'POST',
             url: 'https://api.realworld.io/api/users/login',
